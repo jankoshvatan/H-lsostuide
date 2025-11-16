@@ -18,3 +18,5 @@ def coerce_numeric(df: pd.DataFrame) -> pd.DataFrame:
     for c in ["id", "age", "height", "weight", "systolic_bp", "cholesterol", "disease"]:
         out[c] = pd.to_numeric(out[c], errors="coerce")
     return out
+
+
