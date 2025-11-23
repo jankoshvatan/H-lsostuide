@@ -6,6 +6,10 @@ import math
 from scipy.stats import ttest_ind
 
 class HealthPlot:
+    """En klass som med visualiseringsmetoder för hälso-relaterade variabler
+    i en pandas DataFrame. Klassen har histogram, boxplot och stapeldiagram
+    baserat på kolumner som blodtryck, vikt, kön och rökvanor."""
+  
     def __init__(self, df):
         self.df = df
 

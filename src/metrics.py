@@ -14,14 +14,15 @@ def information(df):
 
 
 def smoker_power_analysis(df):
-    # Split groups
+    """Utför en power-analys för skillnaden i systoliskt blodtryck mellan rökare
+    och icke-rökare baserat på observerad effektstorlek."""
     smokers = df[df["smoker"] == "Yes"]["systolic_bp"]
     non_smokers = df[df["smoker"] == "No"]["systolic_bp"]
 
-    # Effect size (Cohen's d)
+   
     d = pg.compute_effsize(smokers, non_smokers, eftype="cohen")
 
-    # Power analysis
+    
     analysis = TTestIndPower()
     n1 = len(smokers)
     n2 = len(non_smokers)
@@ -34,6 +35,7 @@ def smoker_power_analysis(df):
 
 
 def linear_model(df, parameters):
+    """Anpassar en linjär regressionsmodell för att förutsäga systoliskt blodtryck."""
     x = df[parameters].values
     y = df["systolic_bp"].values
 

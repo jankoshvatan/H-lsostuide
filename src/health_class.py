@@ -7,6 +7,11 @@ from scipy.stats import ttest_ind
 from src.class_plot import HealthPlot
 
 class HealthAnalyser(HealthPlot):
+    """En klass som utökar HealthPlot med statistiska analysmetoder.
+    
+    Klassen erbjuder funktioner för simulering av sjukdomsförekomst, 
+    beräkning av konfidensintervall samt jämförelse av blodtryck mellan 
+    rökare och icke-rökare."""
     def __init__(self, df: pd.DataFrame):
         HealthPlot.__init__(self, df)
     
@@ -19,6 +24,7 @@ class HealthAnalyser(HealthPlot):
         self.__df = df.copy()
     
     def sim_disease(self):
+        """Simulerar sjukdomsförekomst baserat på den observerade andelen i datan."""
         df = self.df
         df = df["disease"]
         disease_prop = df.mean()
@@ -30,6 +36,7 @@ class HealthAnalyser(HealthPlot):
         print(f"Skillnad: {abs(disease_prop - sim_prop):.3f}")
 
     def connfidence_interval(self, column_name: str):
+        """Beräknar ett 95% konfidensintervall för ett urval."""
         sample = self.df[column_name].dropna().to_numpy()
         sample_size = len(sample)
         sample_mean = sample.mean()
@@ -47,6 +54,7 @@ class HealthAnalyser(HealthPlot):
         return f"CL low {t_low:.2f}, CL high {t_high:.2f}"
     
     def blood_pressure_smoker_vs_nonesmoker(self):
+        """Jämför systoliskt blodtryck mellan rökare och icke-rökare med Welch's t-test."""
         df = self.df
         smokers = df[df["smoker"] =="Yes"]["systolic_bp"]
         none_smokers = df[df["smoker"] =="No"]["systolic_bp"]
