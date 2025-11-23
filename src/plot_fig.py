@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 
 
@@ -27,4 +28,18 @@ def bar_smokers(df: pd.DataFrame) -> None:
     ax.set_title("Proportion of Smokers")
     ax.set_xlabel("Smoker")
     ax.set_ylabel("Proportion")
+    plt.show()
+
+
+def plot_regression(x, y, linreg) -> None:
+    plt.figure(figsize=(8, 5))
+    plt.scatter(x, y, alpha=0.7, label="Data", color="blue")
+    x_line = np.linspace(x.min(), x.max(), 100).reshape(-1, 1)
+    y_line = linreg.predict(x_line)
+    plt.plot(x_line, y_line, color="black", label="Regression")
+    plt.xlabel("Age")
+    plt.ylabel("Systolic Blood Pressure")
+    plt.title("Linear Regression: Systolic BP vs Age")
+    plt.legend()
+    plt.grid(True)
     plt.show()
