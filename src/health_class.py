@@ -40,7 +40,7 @@ class HealthAnalyser(HealthPlot):
         sample = self.df[column_name].dropna().to_numpy()
         sample_size = len(sample)
         sample_mean = sample.mean()
-        std = std = sample.std(ddof=1)
+        std = sample.std(ddof=1)
         confidence = 0.95
         alpha = 1 - 0.95 
         degrees_of_freedom = sample_size - 1
