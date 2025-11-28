@@ -43,7 +43,7 @@ def linear_model(df, parameters):
     linreg.fit(x, y)
 
     intercept = float(linreg.intercept_)
-    slope = float(linreg.coef_[0])
+    slope = float(linreg.coef_)
     r2 = float(linreg.score(x, y))
 
     print(f"intercept: {intercept:.3f}")
@@ -51,3 +51,4 @@ def linear_model(df, parameters):
     print(f"R²: {r2:.3f}")
 
     return linreg, x, y, r2
+
