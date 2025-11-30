@@ -9,7 +9,7 @@ from src.class_plot import HealthPlot
 class HealthAnalyser(HealthPlot):
     """En klass som utökar HealthPlot med statistiska analysmetoder.
     
-    Klassen erbjuder funktioner för simulering av sjukdomsförekomst, 
+    Klassen har funktioner för simulering av sjukdomsförekomst, 
     beräkning av konfidensintervall samt jämförelse av blodtryck mellan 
     rökare och icke-rökare."""
     def __init__(self, df: pd.DataFrame):

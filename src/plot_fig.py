@@ -43,3 +43,17 @@ def plot_regression(x, y, linreg) -> None:
     plt.legend()
     plt.grid(True)
     plt.show()
+
+
+def plot_regression_3d(x, y, z) -> None:
+
+    fig = plt.figure(figsize=(8, 6))
+    ax = fig.add_subplot(111, projection="3d")
+
+    ax.scatter(x, y, z, alpha=0.7)
+    ax.set_xlabel("Age")
+    ax.set_ylabel("Weight")
+    ax.set_zlabel("Systolic Blood Pressure")
+    ax.set_title("3D Scatter Plot: Age, Weight, and Blood Pressure")
+    ax.legend()
+    plt.show()
